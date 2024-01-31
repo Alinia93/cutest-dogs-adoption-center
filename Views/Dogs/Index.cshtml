@@ -10,9 +10,22 @@ else
     @foreach(DogModel dog in Model)
     {
         <div class="dog-item">
-            <h2>@dog.Name</h2>
+
+
+          <a asp-route-id="@dog.Id" asp-controller="Dogs" asp-action="Details"> <h2>@dog.Name</h2> </a>
             <label>Favorite Food:</label>
             <span>@dog.FavFood</span>
+
+                @if (dog.IsAdopted)
+                {
+                    <h3>This dog found a happy home</h3>
+                }
+                else
+                {
+                   <a asp-route-id="@dog.Id" asp-controller="Dogs" asp-action="Adopt">Adopt</a>
+                }
+
+            <hr/>
         </div>
         
     }
